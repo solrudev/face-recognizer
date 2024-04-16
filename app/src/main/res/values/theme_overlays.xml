@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="ThemeOverlay.FaceRecognizer.Toolbar.Light" parent="">
+		<item name="colorSurface">?colorPrimary</item>
+		<item name="colorOnSurface">?colorOnPrimary</item>
+		<item name="colorSurfaceVariant">?colorPrimary</item>
+		<item name="colorOnSurfaceVariant">?colorOnPrimary</item>
+		<item name="colorSurfaceContainerLowest">?colorPrimary</item>
+		<item name="colorSurfaceContainerLow">?colorPrimary</item>
+		<item name="colorSurfaceContainer">?colorPrimary</item>
+		<item name="colorSurfaceContainerHigh">?colorPrimary</item>
+		<item name="colorSurfaceContainerHighest">?colorPrimary</item>
+		<item name="actionMenuTextColor">?colorOnPrimary</item>
+		<item name="colorControlNormal">?colorOnPrimary</item>
+	</style>
+
+	<style name="ThemeOverlay.FaceRecognizer.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog.Centered" />
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="Base.Widget.FaceRecognizer.Toolbar.Light" parent="Widget.Material3.Toolbar">
+		<item name="materialThemeOverlay">@style/ThemeOverlay.FaceRecognizer.Toolbar.Light</item>
+		<item name="titleTextColor">?colorOnPrimary</item>
+		<item name="subtitleTextColor">?colorOnPrimary</item>
+		<item name="navigationIconTint">?colorOnPrimary</item>
+	</style>
+
+	<style name="Base.Widget.FaceRecognizer.Toolbar" parent="Base.Widget.FaceRecognizer.Toolbar.Light"/>
+	<style name="Widget.FaceRecognizer.Toolbar" parent="Base.Widget.FaceRecognizer.Toolbar"/>
+
+	<style name="Base.Widget.FaceRecognizer.AppBarLayout.Light" parent="Widget.Material3.AppBarLayout">
+		<item name="materialThemeOverlay">@style/ThemeOverlay.FaceRecognizer.Toolbar.Light</item>
+		<item name="android:background">?colorPrimary</item>
+	</style>
+
+	<style name="Base.Widget.FaceRecognizer.AppBarLayout" parent="Base.Widget.FaceRecognizer.AppBarLayout.Light"/>
+	<style name="Widget.FaceRecognizer.AppBarLayout" parent="Base.Widget.FaceRecognizer.AppBarLayout"/>
+</resources>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/camera_container"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<androidx.camera.view.PreviewView
+		android:id="@+id/previewView_faceCapture"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:scaleType="fillStart" />
+
+	<ru.solrudev.facerecognizer.ui.widget.OverlayView
+		android:id="@+id/overlay_faceCapture_results"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" />
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+		android:id="@+id/button_captureFace_add"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_margin="@dimen/floating_button_margin"
+		android:contentDescription="@string/add"
+		android:src="@drawable/ic_add"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent" />
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+		android:id="@+id/button_captureFace_cameraLens"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="@dimen/floating_button_margin"
+		android:contentDescription="@string/add"
+		android:src="@drawable/ic_camera_switch"
+		app:layout_constraintBottom_toTopOf="@id/button_captureFace_add"
+		app:layout_constraintEnd_toEndOf="@id/button_captureFace_add" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/container_nav_host"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<com.google.android.material.appbar.AppBarLayout
+		android:id="@+id/appBarLayout_nav_host"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<com.google.android.material.appbar.MaterialToolbar
+			android:id="@+id/toolbar_nav_host"
+			android:layout_width="match_parent"
+			android:layout_height="?actionBarSize"
+			tools:menu="@menu/main_menu"
+			tools:title="@string/app_name" />
+
+	</com.google.android.material.appbar.AppBarLayout>
+
+	<androidx.fragment.app.FragmentContainerView
+		android:id="@+id/content_nav_host"
+		android:name="androidx.navigation.fragment.NavHostFragment"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:defaultNavHost="true"
+		app:layout_behavior="@string/appbar_scrolling_view_behavior"
+		app:navGraph="@navigation/main_nav_graph"
+		tools:layout="@layout/fragment_capture_face" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

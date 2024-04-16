@@ -1,0 +1,6 @@
+<resources>
+	<dimen name="floating_button_margin">16dp</dimen>
+	<dimen name="dialog_face_photo_size">150dp</dimen>
+	<dimen name="dialog_element_margin">16dp</dimen>
+	<dimen name="dialog_padding_horizontal">20dp</dimen>
+</resources>

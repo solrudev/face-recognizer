@@ -1,0 +1,7 @@
+﻿<resources>
+	<string name="app_name">Распознаватель лиц</string>
+	<string name="camera_permission_not_granted">Разрешение для камеры не предоставлено.</string>
+	<string name="screen_title_face_capture">Захват лица</string>
+	<string name="add">Добавить</string>
+	<string name="person_name">Имя человека</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="Base.V29.Theme.FaceRecognizer" parent="Base.V28.Theme.FaceRecognizer">
+		<item name="android:forceDarkAllowed">false</item>
+	</style>
+
+	<style name="Base.Theme.FaceRecognizer" parent="Base.V29.Theme.FaceRecognizer" />
+</resources>

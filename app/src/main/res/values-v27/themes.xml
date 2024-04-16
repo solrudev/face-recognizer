@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="Base.V27.Theme.FaceRecognizer" parent="Base.V23.Theme.FaceRecognizer">
+		<item name="android:windowTranslucentNavigation">false</item>
+		<item name="android:windowLightNavigationBar">true</item>
+	</style>
+
+	<style name="Base.Theme.FaceRecognizer" parent="Base.V27.Theme.FaceRecognizer" />
+</resources>

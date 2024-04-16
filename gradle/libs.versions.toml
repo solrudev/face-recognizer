@@ -1,0 +1,34 @@
+[versions]
+android-gradleplugin = "8.3.1"
+kotlin = "1.9.23"
+kotlin-ksp = "1.9.23-1.0.19"
+kotlinx-coroutines = "1.8.0"
+tensorflow-lite = "0.4.4"
+tensorflow-gpu = "2.15.0"
+
+[libraries]
+materialcomponents = { module = "com.google.android.material:material", version = "1.11.0" }
+viewbindingpropertydelegate = { module = "com.github.kirich1409:viewbindingpropertydelegate-noreflection", version = "1.5.9" }
+kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+junit-platform-commons = { module = "org.junit.platform:junit-platform-commons", version = "1.10.1" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version = "5.10.1" }
+mlkit-facedetection = { module = "com.google.mlkit:face-detection", version = "16.1.6" }
+tensorflow-taskvision = { module = "org.tensorflow:tensorflow-lite-task-vision", version = "0.4.4" }
+tensorflow-gpudelegateplugin = { module = "org.tensorflow:tensorflow-lite-gpu-delegate-plugin", version.ref = "tensorflow-lite" }
+tensorflow-gpu = { module = "org.tensorflow:tensorflow-lite-gpu", version.ref = "tensorflow-gpu" }
+tensorflow-gpu-api = { module = "org.tensorflow:tensorflow-lite-gpu-api", version.ref = "tensorflow-gpu" }
+tensorflow-metadata = { module = "org.tensorflow:tensorflow-lite-metadata", version.ref = "tensorflow-lite" }
+tensorflow-support = { module = "org.tensorflow:tensorflow-lite-support", version.ref = "tensorflow-lite" }
+insetter = { module = "dev.chrisbanes.insetter:insetter", version = "0.6.1" }
+
+[bundles]
+junit = ["junit-platform-commons", "junit-jupiter"]
+tensorflow = ["tensorflow-taskvision", "tensorflow-gpudelegateplugin", "tensorflow-gpu", "tensorflow-gpu-api", "tensorflow-metadata", "tensorflow-support"]
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "android-gradleplugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "kotlin-ksp" }
+android-cachefix = { id = "org.gradle.android.cache-fix", version = "3.0" }

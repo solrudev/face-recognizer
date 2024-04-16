@@ -1,0 +1,7 @@
+<resources>
+	<string name="app_name">Face Recognizer</string>
+	<string name="camera_permission_not_granted">Camera permission not granted by the user.</string>
+	<string name="screen_title_face_capture">Face Capture</string>
+	<string name="add">Add</string>
+	<string name="person_name">Person name</string>
+</resources>

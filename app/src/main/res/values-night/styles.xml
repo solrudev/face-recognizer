@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="Base.Widget.FaceRecognizer.Toolbar.Night" parent="Widget.Material3.Toolbar" />
+	<style name="Base.Widget.FaceRecognizer.Toolbar" parent="Base.Widget.FaceRecognizer.Toolbar.Night" />
+
+	<style name="Base.Widget.FaceRecognizer.AppBarLayout.Night" parent="Widget.Material3.AppBarLayout" />
+	<style name="Base.Widget.FaceRecognizer.AppBarLayout" parent="Base.Widget.FaceRecognizer.AppBarLayout.Night" />
+</resources>
