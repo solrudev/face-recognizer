@@ -20,6 +20,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.asExecutor
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
@@ -46,6 +47,7 @@ class FaceCaptureFragment : Fragment(R.layout.fragment_capture_face) {
 	private val requestPermissionLauncher = registerForCameraPermissionResult { startCamera() }
 	private var faceRecognitionAnalyzer: FaceRecognitionAnalyzer? = null
 	private lateinit var cameraExecutor: Executor
+	private var faceRecognitionResultsRenderJob: Job? = null
 
 	@Inject
 	lateinit var faceRecognitionAnalyzerFactory: FaceRecognitionAnalyzerFactory
@@ -112,7 +114,8 @@ class FaceCaptureFragment : Fragment(R.layout.fragment_capture_face) {
 			previewOutputTransformProvider = { binding.previewViewFaceCapture.outputTransform!! }
 		)
 		this.faceRecognitionAnalyzer = faceRecognitionAnalyzer
-		faceRecognitionAnalyzer.startResultsRender()
+		faceRecognitionResultsRenderJob?.cancel()
+		faceRecognitionResultsRenderJob = faceRecognitionAnalyzer.startResultsRender()
 		val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
 		cameraProviderFuture.addListener({
 			if (binding.previewViewFaceCapture.display == null) {
