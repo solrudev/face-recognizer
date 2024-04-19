@@ -113,6 +113,7 @@ class FaceCaptureFragment : Fragment(R.layout.fragment_capture_face) {
 		val faceRecognitionAnalyzer = faceRecognitionAnalyzerFactory.create(
 			previewOutputTransformProvider = { binding.previewViewFaceCapture.outputTransform!! }
 		)
+		this.faceRecognitionAnalyzer?.close()
 		this.faceRecognitionAnalyzer = faceRecognitionAnalyzer
 		faceRecognitionResultsRenderJob?.cancel()
 		faceRecognitionResultsRenderJob = faceRecognitionAnalyzer.startResultsRender()
