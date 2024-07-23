@@ -1,13 +1,13 @@
 [versions]
-android-gradleplugin = "8.3.1"
-kotlin = "1.9.23"
-kotlin-ksp = "1.9.23-1.0.19"
-kotlinx-coroutines = "1.8.0"
+android-gradleplugin = "8.5.0"
+kotlin = "2.0.0"
+kotlin-ksp = "2.0.0-1.0.22"
+kotlinx-coroutines = "1.8.1"
 tensorflow-lite = "0.4.4"
 tensorflow-gpu = "2.15.0"
 
 [libraries]
-materialcomponents = { module = "com.google.android.material:material", version = "1.11.0" }
+materialcomponents = { module = "com.google.android.material:material", version = "1.12.0" }
 viewbindingpropertydelegate = { module = "com.github.kirich1409:viewbindingpropertydelegate-noreflection", version = "1.5.9" }
 kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }

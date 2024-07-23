@@ -113,7 +113,7 @@ dependencies {
 	ksp(dagger.bundles.hilt.compilers)
 
 	implementation(dagger.hilt.android)
-	implementation(androidx.activity.ktx)
+	implementation(androidx.activity)
 	implementation(androidx.fragment.ktx)
 	implementation(androidx.bundles.navigation)
 	implementation(androidx.bundles.camera)

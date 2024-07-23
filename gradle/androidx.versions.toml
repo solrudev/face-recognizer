@@ -1,12 +1,12 @@
 [versions]
 navigation = "2.7.7"
-camera = "1.3.2"
+camera = "1.3.4"
 
 [libraries]
-activity-ktx = { module = "androidx.activity:activity-ktx", version = "1.8.2" }
+activity = { module = "androidx.activity:activity", version = "1.9.0" }
 fragment-ktx = { module = "androidx.fragment:fragment-ktx", version = "1.6.2" }
-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+navigation-fragment = { module = "androidx.navigation:navigation-fragment", version.ref = "navigation" }
+navigation-ui = { module = "androidx.navigation:navigation-ui", version.ref = "navigation" }
 multidex = { module = "androidx.multidex:multidex", version = "2.0.1" }
 test-ext-junit = { module = "androidx.test.ext:junit", version = "1.1.5" }
 espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.5.1" }
@@ -16,7 +16,7 @@ camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = 
 camera-view = { module = "androidx.camera:camera-view", version.ref = "camera" }
 
 [bundles]
-navigation = ["navigation-fragment-ktx", "navigation-ui-ktx"]
+navigation = ["navigation-fragment", "navigation-ui"]
 camera = ["camera-camera2", "camera-extensions", "camera-lifecycle", "camera-view"]
 
 [plugins]
