@@ -57,7 +57,7 @@ class FaceRecognitionProcessorImpl @Inject constructor(
 	override fun processFrame(image: ImageProxy, rotationDegrees: Int, previewTransform: CoordinateTransform) {
 		coroutineScope.launch {
 			val faces = image.use { imageProxy ->
-				faceDetector.detect(imageProxy, rotationDegrees, previewTransform)
+				faceDetector.detect(Image(imageProxy), previewTransform)
 			}
 			detectedFaces.emit(faces)
 		}
