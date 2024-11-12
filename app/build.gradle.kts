@@ -19,7 +19,7 @@ kotlin {
 }
 
 base {
-	archivesName.set(packageName)
+	archivesName = packageName
 }
 
 android {
@@ -122,7 +122,7 @@ dependencies {
 	implementation(libs.viewbindingpropertydelegate)
 	implementation(libs.insetter)
 	implementation(libs.mlkit.facedetection)
-	implementation(libs.bundles.tensorflow)
+	implementation(libs.bundles.litert)
 
 	debugImplementation(androidx.multidex)
 

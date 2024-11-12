@@ -1,10 +1,9 @@
 [versions]
-android-gradleplugin = "8.5.1"
-kotlin = "2.0.0"
-kotlin-ksp = "2.0.0-1.0.22"
-kotlinx-coroutines = "1.8.1"
-tensorflow-lite = "0.4.4"
-tensorflow-gpu = "2.15.0"
+android-gradleplugin = "8.6.1"
+kotlin = "2.0.21"
+kotlin-ksp = "2.0.21-1.0.26"
+kotlinx-coroutines = "1.9.0"
+litert = "1.0.1"
 
 [libraries]
 materialcomponents = { module = "com.google.android.material:material", version = "1.12.0" }
@@ -14,21 +13,20 @@ kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-t
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 junit-platform-commons = { module = "org.junit.platform:junit-platform-commons", version = "1.10.1" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version = "5.10.1" }
-mlkit-facedetection = { module = "com.google.mlkit:face-detection", version = "16.1.6" }
-tensorflow-taskvision = { module = "org.tensorflow:tensorflow-lite-task-vision", version = "0.4.4" }
-tensorflow-gpudelegateplugin = { module = "org.tensorflow:tensorflow-lite-gpu-delegate-plugin", version.ref = "tensorflow-lite" }
-tensorflow-gpu = { module = "org.tensorflow:tensorflow-lite-gpu", version.ref = "tensorflow-gpu" }
-tensorflow-gpu-api = { module = "org.tensorflow:tensorflow-lite-gpu-api", version.ref = "tensorflow-gpu" }
-tensorflow-metadata = { module = "org.tensorflow:tensorflow-lite-metadata", version.ref = "tensorflow-lite" }
-tensorflow-support = { module = "org.tensorflow:tensorflow-lite-support", version.ref = "tensorflow-lite" }
+mlkit-facedetection = { module = "com.google.mlkit:face-detection", version = "16.1.7" }
+mediapipe-tasksvision = { module = "com.google.mediapipe:tasks-vision", version = "0.10.18" }
+litert-gpu = { module = "com.google.ai.edge.litert:litert-gpu", version.ref = "litert" }
+litert-gpu-api = { module = "com.google.ai.edge.litert:litert-gpu-api", version.ref = "litert" }
+litert-metadata = { module = "com.google.ai.edge.litert:litert-metadata", version.ref = "litert" }
+litert-support = { module = "com.google.ai.edge.litert:litert-support", version.ref = "litert" }
 insetter = { module = "dev.chrisbanes.insetter:insetter", version = "0.6.1" }
 
 [bundles]
 junit = ["junit-platform-commons", "junit-jupiter"]
-tensorflow = ["tensorflow-taskvision", "tensorflow-gpudelegateplugin", "tensorflow-gpu", "tensorflow-gpu-api", "tensorflow-metadata", "tensorflow-support"]
+litert = ["mediapipe-tasksvision", "litert-gpu", "litert-gpu-api", "litert-metadata", "litert-support"]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradleplugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "kotlin-ksp" }
-android-cachefix = { id = "org.gradle.android.cache-fix", version = "3.0" }
+android-cachefix = { id = "org.gradle.android.cache-fix", version = "3.0.1" }

@@ -1,10 +1,10 @@
 [versions]
-navigation = "2.7.7"
-camera = "1.3.4"
+navigation = "2.8.3"
+camera = "1.4.0"
 
 [libraries]
-activity = { module = "androidx.activity:activity", version = "1.9.0" }
-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version = "1.6.2" }
+activity = { module = "androidx.activity:activity", version = "1.9.3" }
+fragment-ktx = { module = "androidx.fragment:fragment-ktx", version = "1.8.5" }
 navigation-fragment = { module = "androidx.navigation:navigation-fragment", version.ref = "navigation" }
 navigation-ui = { module = "androidx.navigation:navigation-ui", version.ref = "navigation" }
 multidex = { module = "androidx.multidex:multidex", version = "2.0.1" }
