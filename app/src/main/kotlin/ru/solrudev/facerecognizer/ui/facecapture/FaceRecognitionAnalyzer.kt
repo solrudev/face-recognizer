@@ -41,9 +41,8 @@ class FaceRecognitionAnalyzer @AssistedInject constructor(
 			return
 		}
 		val sourceTransform = imageProxyTransformFactory.getOutputTransform(image)
-		val rotationDegrees = image.imageInfo.rotationDegrees
 		val previewTransform = CoordinateTransform(sourceTransform, previewOutputTransform)
-		faceRecognitionProcessor.processFrame(image, rotationDegrees, previewTransform)
+		faceRecognitionProcessor.processFrame(image, previewTransform)
 	}
 
 	override fun getDefaultTargetResolution(): Size {

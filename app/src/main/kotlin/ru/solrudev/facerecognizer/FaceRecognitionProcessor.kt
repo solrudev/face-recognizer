@@ -24,7 +24,7 @@ import kotlin.time.Duration.Companion.milliseconds
 
 interface FaceRecognitionProcessor : AutoCloseable {
 	val results: Flow<List<FaceRecognition>>
-	fun processFrame(image: ImageProxy, rotationDegrees: Int, previewTransform: CoordinateTransform)
+	fun processFrame(image: ImageProxy, previewTransform: CoordinateTransform)
 }
 
 class FaceRecognitionProcessorImpl @Inject constructor(
@@ -54,7 +54,7 @@ class FaceRecognitionProcessorImpl @Inject constructor(
 		}
 	}
 
-	override fun processFrame(image: ImageProxy, rotationDegrees: Int, previewTransform: CoordinateTransform) {
+	override fun processFrame(image: ImageProxy, previewTransform: CoordinateTransform) {
 		coroutineScope.launch {
 			val faces = image.use { imageProxy ->
 				faceDetector.detect(Image(imageProxy), previewTransform)
