@@ -10,11 +10,12 @@ import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.camera.lifecycle.awaitInstance
 import androidx.camera.view.TransformExperimental
-import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +27,7 @@ import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import ru.solrudev.facerecognizer.R
 import ru.solrudev.facerecognizer.databinding.DialogAddFaceBinding
 import ru.solrudev.facerecognizer.databinding.FragmentCaptureFaceBinding
@@ -117,26 +119,29 @@ class FaceCaptureFragment : Fragment(R.layout.fragment_capture_face) {
 		this.faceRecognitionAnalyzer = faceRecognitionAnalyzer
 		faceRecognitionResultsRenderJob?.cancel()
 		faceRecognitionResultsRenderJob = faceRecognitionAnalyzer.startResultsRender()
-		val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
-		cameraProviderFuture.addListener({
-			if (binding.previewViewFaceCapture.display == null) {
-				return@addListener
-			}
-			val cameraProvider = cameraProviderFuture.get()
-			val preview = Preview.Builder()
-				.build()
-				.also { it.setSurfaceProvider(binding.previewViewFaceCapture.surfaceProvider) }
-			val imageAnalysis = ImageAnalysis.Builder()
-				.setTargetRotation(binding.previewViewFaceCapture.display.rotation)
-				.setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
-				.build()
-				.also { it.setAnalyzer(cameraExecutor, faceRecognitionAnalyzer) }
-			val cameraSelector = CameraSelector.Builder()
-				.requireLensFacing(cameraLens)
-				.build()
-			cameraProvider.unbindAll()
-			cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageAnalysis)
-		}, ContextCompat.getMainExecutor(requireContext()))
+		lifecycleScope.launch {
+			startCamera(faceRecognitionAnalyzer, cameraLens)
+		}
+	}
+
+	private suspend inline fun startCamera(analyzer: FaceRecognitionAnalyzer, cameraLens: Int) {
+		val cameraProvider = ProcessCameraProvider.awaitInstance(requireContext())
+		if (binding.previewViewFaceCapture.display == null) {
+			return
+		}
+		val preview = Preview.Builder()
+			.build()
+			.also { it.surfaceProvider = binding.previewViewFaceCapture.surfaceProvider }
+		val imageAnalysis = ImageAnalysis.Builder()
+			.setTargetRotation(binding.previewViewFaceCapture.display.rotation)
+			.setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+			.build()
+			.also { it.setAnalyzer(cameraExecutor, analyzer) }
+		val cameraSelector = CameraSelector.Builder()
+			.requireLensFacing(cameraLens)
+			.build()
+		cameraProvider.unbindAll()
+		cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageAnalysis)
 	}
 
 	private fun showAddFaceDialog(dialog: AddFaceDialog) {
