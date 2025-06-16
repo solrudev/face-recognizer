@@ -12,13 +12,14 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.lifecycle.awaitInstance
 import androidx.camera.view.TransformExperimental
+import androidx.core.view.doOnAttach
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
+import dev.androidbroadcast.vbpd.viewBinding
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -119,16 +120,13 @@ class FaceCaptureFragment : Fragment(R.layout.fragment_capture_face) {
 		this.faceRecognitionAnalyzer = faceRecognitionAnalyzer
 		faceRecognitionResultsRenderJob?.cancel()
 		faceRecognitionResultsRenderJob = faceRecognitionAnalyzer.startResultsRender()
-		lifecycleScope.launch {
+		binding.previewViewFaceCapture.doOnAttach {
 			startCamera(faceRecognitionAnalyzer, cameraLens)
 		}
 	}
 
-	private suspend inline fun startCamera(analyzer: FaceRecognitionAnalyzer, cameraLens: Int) {
+	private fun startCamera(analyzer: FaceRecognitionAnalyzer, cameraLens: Int) = lifecycleScope.launch {
 		val cameraProvider = ProcessCameraProvider.awaitInstance(requireContext())
-		if (binding.previewViewFaceCapture.display == null) {
-			return
-		}
 		val preview = Preview.Builder()
 			.build()
 			.also { it.surfaceProvider = binding.previewViewFaceCapture.surfaceProvider }
@@ -141,7 +139,7 @@ class FaceCaptureFragment : Fragment(R.layout.fragment_capture_face) {
 			.requireLensFacing(cameraLens)
 			.build()
 		cameraProvider.unbindAll()
-		cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageAnalysis)
+		cameraProvider.bindToLifecycle(this@FaceCaptureFragment, cameraSelector, preview, imageAnalysis)
 	}
 
 	private fun showAddFaceDialog(dialog: AddFaceDialog) {
