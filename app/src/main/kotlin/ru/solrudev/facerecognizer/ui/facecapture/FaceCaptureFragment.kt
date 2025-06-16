@@ -1,8 +1,6 @@
 package ru.solrudev.facerecognizer.ui.facecapture
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.OptIn
@@ -59,11 +57,9 @@ class FaceCaptureFragment : Fragment(R.layout.fragment_capture_face) {
 	@DefaultDispatcher
 	lateinit var defaultDispatcher: CoroutineDispatcher
 
-	@SuppressLint("SourceLockedOrientationActivity")
 	override fun onAttach(context: Context) {
 		super.onAttach(context)
 		cameraExecutor = defaultDispatcher.asExecutor()
-		requireActivity().requestedOrientation = SCREEN_ORIENTATION_PORTRAIT
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
