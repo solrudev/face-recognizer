@@ -1,6 +1,4 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
-import java.util.Locale
 import java.util.Properties
 
 val packageName = "ru.solrudev.facerecognizer"
@@ -15,7 +13,7 @@ plugins {
 }
 
 kotlin {
-	jvmToolchain(17)
+	jvmToolchain(21)
 }
 
 base {
@@ -23,14 +21,14 @@ base {
 }
 
 android {
-	compileSdk = 34
-	buildToolsVersion = "34.0.0"
+	compileSdk = 35
+	buildToolsVersion = "35.0.1"
 	namespace = packageName
 
 	defaultConfig {
 		applicationId = packageName
 		minSdk = 26
-		targetSdk = 34
+		targetSdk = 35
 		versionCode = 1
 		versionName = "0.0.1"
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -76,8 +74,8 @@ android {
 	}
 
 	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_17
-		targetCompatibility = JavaVersion.VERSION_17
+		sourceCompatibility = JavaVersion.VERSION_21
+		targetCompatibility = JavaVersion.VERSION_21
 	}
 
 	buildFeatures {
@@ -94,19 +92,6 @@ tasks.withType<KotlinJvmCompile>().configureEach {
 
 tasks.withType<Test>().configureEach {
 	useJUnitPlatform()
-}
-
-androidComponents {
-	onVariants(selector().all()) { variant ->
-		afterEvaluate {
-			val variantName = variant.name.replaceFirstChar {
-				if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
-			}
-			tasks.getByName<KotlinCompile>("ksp${variantName}Kotlin") {
-				setSource(tasks.getByName("generate${variantName}MlModelClass").outputs)
-			}
-		}
-	}
 }
 
 dependencies {

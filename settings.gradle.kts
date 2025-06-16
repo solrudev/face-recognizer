@@ -10,16 +10,15 @@ pluginManagement {
 				includeGroupAndSubgroups("androidx")
 				includeGroupAndSubgroups("com.android")
 				includeGroupAndSubgroups("com.google")
-				includeGroup("com.google.testing.platform")
 			}
 		}
-		gradlePluginPortal()
 		mavenCentral()
+		gradlePluginPortal()
 	}
 }
 
 plugins {
-	id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
+	id("org.gradle.toolchains.foojay-resolver-convention") version "0.9.0"
 }
 
 dependencyResolutionManagement {

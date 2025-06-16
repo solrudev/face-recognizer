@@ -7,8 +7,8 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import dev.androidbroadcast.vbpd.viewBinding
 import dev.chrisbanes.insetter.applyInsetter
 import ru.solrudev.facerecognizer.R
 import ru.solrudev.facerecognizer.databinding.MainNavHostBinding
